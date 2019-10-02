@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.james.utils.LogUtils;
 import com.james.views.FreeLayout;
 import com.james.views.FreeTextView;
 import com.zonar.zonarapp.R;
@@ -141,6 +140,8 @@ public class ZaMajorLayout extends FreeLayout {
     }
 
     private void setListener() {
+
+        // TODO 圓圈內移動時，會回傳一個角度的callback，藉此控制外圈文字顏色
         circleWaveView.setOnAngleChangedListener(new CircleWaveView.OnAngleChangedListener() {
             @Override
             public void onAngleChanged(float angle) {

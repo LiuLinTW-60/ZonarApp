@@ -14,7 +14,17 @@
   > 放置各種 adapter，目前只有切換模式的 adapter
   * .dialog
   > 放置各種 dialog，目前只有 InputDialog，用於輸入自建模式
-  * .layout
+  * .layout.ZaMajorLayout.java
   > 放置各種 Activity 的 Layout，比較重要的是 ZaMajorLayout
-    * .ZaMajorLayout.java
-    > 
+  > 圓圈內移動時，會回傳一個角度的callback，藉此控制外圈文字顏色
+  * .slide.SlideMenuItem.java
+  > 右邊 Menu 裡的客製化 Item
+  * .slide.SlideMenuView.java
+  > 右邊 Menu 裡的所有功能，其中每個元件都是一個 SlideMenuItem
+  * .view.CircleWaveView.java
+  > 繪製波形圖的客製化 View，包含波形、等高線圖、漸層、手勢控制等，詳細內容在 code 裡有另外註解
+  * .view.TitleContentText.java
+  > 客製化 View，其效果是，右邊是 Title，左邊是內容
+  * .view.Toolbar.java
+  > 客製化 Toolbar，位置在畫面最上方
+  
