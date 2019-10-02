@@ -27,4 +27,16 @@
   > 客製化 View，其效果是，右邊是 Title，左邊是內容
   * .view.Toolbar.java
   > 客製化 Toolbar，位置在畫面最上方
+
+* com.zonar.zonarapp.utils
+> 一些工具
+  * .ZonarUtils.java
+  > 與 Zonar SDK 溝通的工具，負責取得 EQ 值以及寫入 SDK，並避免發生 race condition 或是同時寫入的動作
+
+* com.zonar.zonarapp.ZaMajorActivity.java
+> 目前 APP 的主要畫面，負責管理 View 與 Model 的溝通
+
+### 目前比較重要的程式碼部分如上
+  
+  
   

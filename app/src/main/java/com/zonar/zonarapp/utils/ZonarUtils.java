@@ -6,16 +6,16 @@ import com.xround_app_sdk.Controller;
 
 public class ZonarUtils {
 
-    private static final boolean IS_SIMULATE = false;
+    private static final boolean IS_SIMULATE = true; // 用來測試用的，正常來說保持 false 即可
 
     private static Context context;
     private static Controller controller;
 
-    private static double[] sZonarEQ;
-    private static int sNumero;
-    private static int sMode;
+    private static double[] sZonarEQ; // 用來cache最後一次未寫入的EQ
+    private static int sNumero; // 用來判斷最後一次未寫入的 numero 是否有變化
+    private static int sMode; // 用來判斷最後一次未寫入的 mode 是否有變化
 
-    private static boolean flagWriting = false;
+    private static boolean flagWriting = false; // 處理內差時，需抓前後筆 EQ 值，但其中一筆只是要抓數值而已，並不寫入
 
     public static void init(Context ctx) {
         context = ctx;
@@ -24,6 +24,7 @@ public class ZonarUtils {
         }
     }
 
+    // 從 SDK 取得 EQ，並做 Normalize，因為有發現負值的資料
     public static double[] getEQData(boolean isWrite, int numero, int mode) {
         double[] eq_double = !IS_SIMULATE ? EQ_CTRLtable(numero) : simulate_EQ_CTRLtable(numero);
 
@@ -59,6 +60,7 @@ public class ZonarUtils {
         return controller.EQ_table(numero);
     }
 
+    // 寫入 SDK，並且避免發生 race condition，或是同時寫入的動作
     private synchronized static void write_ZonarEQ(final double[] ZonarEQ, final int numero, final int mode) {
         sZonarEQ = ZonarEQ;
         sNumero = numero;
